@@ -79,17 +79,17 @@
             image-rendering: crisp-edges;
         }
 
-        /* Kamil - left */
+        /* Kamil - left of center */
         .kamil-sprite {
-            left: 18%;
-            transform: translateX(-50%);
+            left: 35%;
+            transform: translateX(-50%) scale(1.3);
             animation: idle 0.8s steps(2) infinite;
         }
 
-        /* Marcin - right */
+        /* Marcin - right of center */
         .marcin-sprite {
-            right: 18%;
-            transform: translateX(50%);
+            left: 58%;
+            transform: translateX(-50%) scale(1.3);
             animation: idle 0.8s steps(2) infinite;
             animation-delay: 0.4s;
         }
@@ -100,11 +100,13 @@
         }
 
         .dog-fat-sprite {
-            left: 5%;
+            left: 8%;
+            transform: scale(1.2);
         }
 
         .dog-slim-sprite {
-            right: 5%;
+            right: 8%;
+            transform: scale(1.2);
         }
 
         @keyframes idle {
@@ -121,15 +123,25 @@
         }
 
         .kamil-label {
-            left: 18%;
-            bottom: 15px;
+            left: 35%;
+            bottom: 10px;
             transform: translateX(-50%);
         }
 
         .marcin-label {
-            right: 18%;
-            bottom: 15px;
-            transform: translateX(50%);
+            left: 58%;
+            bottom: 10px;
+            transform: translateX(-50%);
+        }
+
+        .dog-fat-label {
+            left: 8%;
+            bottom: 10px;
+        }
+
+        .dog-slim-label {
+            right: 8%;
+            bottom: 10px;
         }
 
         /* Ground */
@@ -278,8 +290,10 @@
             <canvas id="dogFatCanvas" class="pixel-canvas dog-sprite dog-fat-sprite" width="80" height="56"></canvas>
             <canvas id="dogSlimCanvas" class="pixel-canvas dog-sprite dog-slim-sprite" width="56" height="48"></canvas>
             
-            <div class="label kamil-label">KAMIL<br>DZIDEK</div>
-            <div class="label marcin-label">MARCIN<br>DZIDEK</div>
+            <div class="label dog-fat-label">GRUBY<br>HUSKY</div>
+            <div class="label kamil-label">DZIDEK</div>
+            <div class="label marcin-label">DZIDEK</div>
+            <div class="label dog-slim-label">AKIRA</div>
             
             <div class="ground"></div>
         </div>
