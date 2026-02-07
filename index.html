@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Wszystkiego Najlepszego Dzidek! 🎂</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            overflow-x: hidden;
+            image-rendering: pixelated;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(16px, 4vw, 28px);
+            color: #ffd700;
+            text-shadow: 4px 4px 0 #ff6b00, 8px 8px 0 #333;
+            margin: 30px 0;
+            animation: bounce 0.5s ease infinite alternate;
+            line-height: 1.5;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .age {
+            font-size: clamp(48px, 15vw, 120px);
+            color: #ff1493;
+            text-shadow: 6px 6px 0 #8b0000, 12px 12px 0 #333;
+            margin: 20px 0;
+            animation: pulse 1s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 40px 0;
+            background: linear-gradient(180deg, transparent 0%, #2d5a27 80%, #1e3d1a 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid #333;
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: repeating-linear-gradient(
+                90deg,
+                #2d5a27 0px,
+                #2d5a27 20px,
+                #3d7a37 20px,
+                #3d7a37 40px
+            );
+        }
+
+        /* Pixel Characters */
+        .character {
+            position: absolute;
+            bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Kamil - left side */
+        .kamil {
+            left: 15%;
+            animation: idle 0.8s ease infinite;
+        }
+
+        /* Marcin - right side */
+        .marcin {
+            right: 15%;
+            animation: idle 0.8s ease infinite;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes idle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .pixel-person {
+            width: 60px;
+            height: 100px;
+            position: relative;
+        }
+
+        /* Kamil pixel art - smooth face, big package */
+        .kamil .pixel-person {
+            background: 
+                /* Head */
+                linear-gradient(#ffcc99, #ffcc99) 15px 0/30px 30px,
+                /* Body */
+                linear-gradient(#ff4444, #ff4444) 10px 30px/40px 40px,
+                /* Legs */
+                linear-gradient(#333, #333) 15px 70px/12px 30px,
+                linear-gradient(#333, #333) 33px 70px/12px 30px,
+                /* Package bulge */
+                linear-gradient(#444, #444) 22px 65px/16px 12px;
+            background-repeat: no-repeat;
+        }
+
+        .kamil .pixel-person::before {
+            content: "😎";
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+
+        /* Marcin pixel art - with beard, bigger */
+        .marcin .pixel-person {
+            width: 70px;
+            height: 110px;
+            background: 
+                /* Head */
+                linear-gradient(#ffcc99, #ffcc99) 17px 0/36px 35px,
+                /* Beard */
+                linear-gradient(#8b4513, #8b4513) 20px 25px/30px 15px,
+                /* Body */
+                linear-gradient(#4444ff, #4444ff) 10px 35px/50px 45px,
+                /* Legs */
+                linear-gradient(#333, #333) 15px 80px/15px 30px,
+                linear-gradient(#333, #333) 40px 80px/15px 30px;
+            background-repeat: no-repeat;
+        }
+
+        .marcin .pixel-person::before {
+            content: "🧔";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+        }
+
+        /* Dogs */
+        .dog {
+            position: absolute;
+            bottom: 60px;
+            font-size: 40px;
+            animation: wag 0.3s ease infinite alternate;
+        }
+
+        .dog-fat {
+            left: 5%;
+            transform: scaleX(-1);
+        }
+
+        .dog-slim {
+            right: 5%;
+        }
+
+        .dog-fat::after {
+            content: "🐕";
+            font-size: 50px;
+        }
+
+        .dog-slim::after {
+            content: "🐕";
+            font-size: 35px;
+        }
+
+        @keyframes wag {
+            from { transform: rotate(-5deg); }
+            to { transform: rotate(5deg); }
+        }
+
+        .dog-fat {
+            animation: wag 0.3s ease infinite alternate, waddle 1s ease infinite;
+        }
+
+        @keyframes waddle {
+            0%, 100% { transform: scaleX(-1) translateY(0); }
+            50% { transform: scaleX(-1) translateY(-3px); }
+        }
+
+        /* Wishes */
+        .wishes {
+            background: rgba(0,0,0,0.7);
+            border: 4px solid #ffd700;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            animation: glow 2s ease infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px #ffd700; }
+            50% { box-shadow: 0 0 40px #ffd700, 0 0 60px #ff6b00; }
+        }
+
+        .wishes p {
+            font-size: clamp(10px, 2.5vw, 14px);
+            line-height: 2;
+            margin: 15px 0;
+            color: #7fff00;
+        }
+
+        .wishes .highlight {
+            color: #ff69b4;
+            animation: rainbow 3s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            17% { color: #ff8000; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            67% { color: #0080ff; }
+            83% { color: #8000ff; }
+            100% { color: #ff0000; }
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .signature span {
+            color: #00ff00;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Cake */
+        .cake {
+            font-size: 60px;
+            animation: float 2s ease infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Husky pixel art */
+        .husky {
+            position: absolute;
+            bottom: 55px;
+        }
+
+        .husky-fat {
+            left: 2%;
+            width: 70px;
+            height: 50px;
+        }
+
+        .husky-slim {
+            right: 2%;
+            width: 50px;
+            height: 45px;
+        }
+
+        .husky-body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .husky-fat .husky-body {
+            background:
+                /* Body - fat */
+                radial-gradient(ellipse 35px 25px at 35px 30px, #a0a0a0 100%, transparent),
+                /* Head */
+                radial-gradient(ellipse 18px 15px at 60px 20px, #a0a0a0 100%, transparent),
+                /* Ears */
+                linear-gradient(#333, #333) 55px 5px/8px 12px,
+                linear-gradient(#333, #333) 68px 5px/8px 12px,
+                /* Legs */
+                linear-gradient(#a0a0a0, #a0a0a0) 10px 40px/10px 15px,
+                linear-gradient(#a0a0a0, #a0a0a0) 25px 40px/10px 15px,
+                linear-gradient(#a0a0a0, #a0a0a0) 45px 40px/10px 15px;
+            background-repeat: no-repeat;
+        }
+
+        .husky-slim .husky-body {
+            background:
+                /* Body - slim */
+                radial-gradient(ellipse 25px 18px at 25px 25px, #b0b0b0 100%, transparent),
+                /* Head */
+                radial-gradient(ellipse 14px 12px at 45px 18px, #b0b0b0 100%, transparent),
+                /* Ears */
+                linear-gradient(#333, #333) 42px 4px/6px 10px,
+                linear-gradient(#333, #333) 52px 4px/6px 10px,
+                /* Legs */
+                linear-gradient(#b0b0b0, #b0b0b0) 8px 35px/6px 12px,
+                linear-gradient(#b0b0b0, #b0b0b0) 20px 35px/6px 12px,
+                linear-gradient(#b0b0b0, #b0b0b0) 35px 35px/6px 12px;
+            background-repeat: no-repeat;
+        }
+
+        .label {
+            font-size: 8px;
+            color: #ffd700;
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="cake">🎂</div>
+        
+        <h1>WSZYSTKIEGO NAJLEPSZEGO<br>DZIDEK!</h1>
+        
+        <div class="age">37</div>
+        
+        <div class="scene">
+            <div class="ground"></div>
+            
+            <!-- Gruby Husky obok Kamila -->
+            <div class="husky husky-fat">
+                <div class="husky-body"></div>
+                <div class="label">🐕 GRUBY</div>
+            </div>
+            
+            <!-- Kamil -->
+            <div class="character kamil">
+                <div class="pixel-person"></div>
+                <div class="label">KAMIL</div>
+            </div>
+            
+            <!-- Marcin -->
+            <div class="character marcin">
+                <div class="pixel-person"></div>
+                <div class="label">DZIDEK<br>(MARCIN)</div>
+            </div>
+            
+            <!-- Szczupły Husky obok Marcina -->
+            <div class="husky husky-slim">
+                <div class="husky-body"></div>
+                <div class="label">🐕 SZCZUPŁY</div>
+            </div>
+        </div>
+        
+        <div class="wishes">
+            <p>🎮 <span class="highlight">LEVEL 37 UNLOCKED!</span> 🎮</p>
+            <p>Życzymy Ci:</p>
+            <p>❤️ ZDROWIA +9999</p>
+            <p>💰 GOLD UNLIMITED</p>
+            <p>🍺 PIWO ALWAYS COLD</p>
+            <p>🔥 CHARISMA MAX LEVEL</p>
+            <p>🎯 ACCURACY 100%</p>
+            <p class="highlight">I ŻEBYŚ NIGDY NIE ZAPOMNIAŁ<br>ŻE JESTEŚ DZIDKIEM!</p>
+        </div>
+        
+        <div class="signature">
+            Od trzech Dzidków:<br>
+            <span>🧔 Marcin (Dzidek OG)</span><br>
+            <span>🤖 Dzidek AI</span><br>
+            <span>🐕🐕 + Dwa Husky</span>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Create confetti
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffd700'];
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>
